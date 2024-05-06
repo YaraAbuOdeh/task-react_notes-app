@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import NotesList from "./NotesList";
 import Search from "./Search";
-import Header from "./Header";
 import UpdateNoteDialog from "./UpdateNoteDialog";
 const Notes = () => {
   const [notes, setNotes] = useState([]);
@@ -74,7 +73,7 @@ const Notes = () => {
   }, []);
   return (
     <div className="container">
-      <Header />
+      <h1>Notes</h1>
       <Search handleSearchNote={handleSearchNote} />
       <NotesList
         notes={notes}
