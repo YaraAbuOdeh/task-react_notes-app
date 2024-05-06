@@ -1,11 +1,24 @@
 import React from 'react';
 
-const NoteDialog = ({ open, onClose, note, onSave }) => {
-    const [title, setTitle] = React.useState(note.title);
-    const [content, setContent] = React.useState(note.content);
+const UpdateNoteDialog = ({ open, onClose, note, onSave }) => {
+    const [title, setTitle] = React.useState('');
+    const [content, setContent] = React.useState('');
+
+    React.useEffect(() => {
+        if (note) {
+            setTitle(note.title);
+            setContent(note.content);
+        }
+    }, [note]);
 
     const handleSave = () => {
         onSave(note._id, title, content);
+        onClose();
+    };
+
+    const handleClose = () => {
+        setTitle('');
+        setContent('');
         onClose();
     };
 
@@ -25,7 +38,7 @@ const NoteDialog = ({ open, onClose, note, onSave }) => {
                     onChange={(e) => setContent(e.target.value)}
                 />
                 <div className="note-footer">
-                    <button onClick={onClose}>Cancel</button>
+                    <button onClick={handleClose}>Cancel</button>
                     <button onClick={handleSave}>Done</button>
                 </div>
             </div>
@@ -33,4 +46,4 @@ const NoteDialog = ({ open, onClose, note, onSave }) => {
     );
 };
 
-export default NoteDialog;
+export default UpdateNoteDialog ;

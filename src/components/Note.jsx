@@ -1,23 +1,23 @@
 import { useState } from "react";
 import { MdDeleteForever } from 'react-icons/md';
-import Dialog from './Dialog';
+import DeleteNoteDialog from './DeleteNoteDialog';
 
 const Note = ({ id, title, content, date, onSelect , handleDeleteNote }) => {
     const [hovered, setHovered] = useState(false);
-    const [showModal, setShowModal] = useState(false);
+    const [showDialog, setshowDialog] = useState(false);
 
-    const openModal = () => {
-        setShowModal(true);
+    const openDialog = () => {
+        setshowDialog(true);
     };
 
-    const closeModal = () => {
-        setShowModal(false);
+    const closeDialog = () => {
+        setshowDialog(false);
     };
 
-    const confirmDelete = () => {
-        console.log("Deleting note with id:", id);
+    const confirmDelete = (e) => {
+        e.stopPropagation();
         handleDeleteNote(id); 
-        closeModal();
+        closeDialog();
     };
 
     return (
@@ -31,12 +31,12 @@ const Note = ({ id, title, content, date, onSelect , handleDeleteNote }) => {
                         <MdDeleteForever
                         onClick={(e) => {
                             e.stopPropagation();
-                            openModal();
+                            openDialog();
                         }}
                             className='delete-icon'
                             size='1.3em'
                         />
-                        <Dialog isOpen={showModal} onClose={closeModal} onConfirm={confirmDelete} />
+                        <DeleteNoteDialog isOpen={showDialog} onClose={closeDialog} onConfirm={confirmDelete} />
                     </>
                 )}
             </div>

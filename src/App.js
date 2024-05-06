@@ -3,7 +3,7 @@ import axios from "axios";
 import NotesList from "./components/NotesList";
 import Search from "./components/Search";
 import Header from "./components/Header";
-import NoteDialog from "./components/NoteDialog";
+import UpdateNoteDialog from "./components/UpdateNoteDialog";
 
 const App = () => {
   const [notes, setNotes] = useState([]);
@@ -12,7 +12,7 @@ const App = () => {
 
   useEffect(() => {
     fetchNotes();
-  }, []); // Fetch notes when component mounts
+  }, []); 
 
   const fetchNotes = async () => {
     try {
@@ -24,7 +24,7 @@ const App = () => {
   };
 
   const handleSelectNote = (id) => {
-    const note = notes.find((n) => n._id === id);
+    const note = notes.find((note) => note._id === id);
     setCurrentNote(note);
     setDialogOpen(true);
   };
@@ -35,7 +35,7 @@ const App = () => {
         title,
         content,
       });
-      fetchNotes(); // Refresh notes after update
+      fetchNotes(); 
     } catch (error) {
       console.error("Error updating note:", error);
     }
@@ -48,16 +48,16 @@ const App = () => {
         title,
         content,
       });
-      fetchNotes(); // Refresh notes after addition
+      fetchNotes(); 
     } catch (error) {
       console.error("Error adding note:", error);
     }
   };
 
-  const deleteNote = async (id) => {
+  const handleDeleteNote = async (id) => {
     try {
       await axios.delete(`http://localhost:3000/notes/${id}`);
-      fetchNotes(); // Refresh notes after deletion
+      fetchNotes(); 
     } catch (error) {
       console.error("Error deleting note:", error);
     }
@@ -79,11 +79,11 @@ const App = () => {
       <NotesList
         notes={notes}
         handleAddNote={handleAddNote}
-        handleDeleteNote={deleteNote}
+        handleDeleteNote={handleDeleteNote}
         handleSelectNote={handleSelectNote}
       />
       {currentNote && (
-        <NoteDialog
+        <UpdateNoteDialog
           open={dialogOpen}
           onClose={() => setDialogOpen(false)}
           note={currentNote}
