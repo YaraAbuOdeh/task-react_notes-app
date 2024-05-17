@@ -1,8 +1,9 @@
 import { useState } from "react";
+import styles from "./NoteItem.module.css";
 import { MdDeleteForever } from "react-icons/md";
-import DeleteNoteDialog from "./DeleteNoteDialog";
+import DeleteNoteDialog from "../DeleteNoteDialog/DeleteNoteDialog";
 
-const NoteItem = ({ id, title, content, date, onSelect, handleDeleteNote }) => {
+const NoteItem = ({ id, title, content, date, onSelect, onDelete }) => {
   const [hovered, setHovered] = useState(false);
   const [showDialog, setshowDialog] = useState(false);
 
@@ -16,13 +17,13 @@ const NoteItem = ({ id, title, content, date, onSelect, handleDeleteNote }) => {
 
   const confirmDelete = (e) => {
     e.stopPropagation();
-    handleDeleteNote(id);
+    onDelete(id);
     closeDialog();
   };
 
   return (
     <div
-      className="note"
+      className={styles.note}
       onClick={() => onSelect(id)}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -38,7 +39,7 @@ const NoteItem = ({ id, title, content, date, onSelect, handleDeleteNote }) => {
                 e.stopPropagation();
                 openDialog();
               }}
-              className="delete-icon"
+              className={styles.deleteIcon}
               size="1.3em"
             />
             <DeleteNoteDialog

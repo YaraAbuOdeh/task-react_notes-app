@@ -1,10 +1,12 @@
 import { useState } from "react";
-
+import styles from "./AddNote.module.css"
 const AddNote = ({ handleAddNote }) => {
     const [expanded, setExpanded] = useState(false);
     const [noteTitle, setNoteTitle] = useState('');
     const [noteContent, setNoteContent] = useState('');
-
+    const [titleError, setTitleError] = useState('');
+    const [contentError, setContentError] = useState('');
+    
     const handleExpand = () => {
         setExpanded(true);
     };
@@ -13,17 +15,30 @@ const AddNote = ({ handleAddNote }) => {
         setExpanded(false);
         setNoteTitle('');
         setNoteContent('');
+        setTitleError('');
+        setContentError('');
     };
 
     const handleSaveClick = () => {
-        if (noteTitle.trim().length > 0 && noteContent.trim().length > 0) {
+        let valid = true;
+        if (noteTitle.trim().length === 0) {
+            setTitleError('Title is required');
+            valid = false;
+        } else {
+            setTitleError('');
+        }
+        if (noteContent.trim().length === 0) {
+            setContentError('Content is required');
+            valid = false;
+        } else {
+            setContentError('');
+        }
+        if (valid) {
             handleAddNote({
                 title: noteTitle,
                 content: noteContent
             });
-            setExpanded(false);
-            setNoteTitle('');
-            setNoteContent('');
+            handleCancel();
         }
     };
 
@@ -37,6 +52,7 @@ const AddNote = ({ handleAddNote }) => {
                         value={noteTitle}
                         onChange={(e) => setNoteTitle(e.target.value)}
                     />
+                    {titleError && <div className="error">{titleError}</div>}
                     <textarea
                         rows='4'
                         cols='5'
@@ -44,6 +60,7 @@ const AddNote = ({ handleAddNote }) => {
                         value={noteContent}
                         onChange={(e) => setNoteContent(e.target.value)}
                     ></textarea>
+                    {contentError && <div className="error">{contentError}</div>}
                     <div className="note-footer">
                         <button className="cancel" onClick={handleCancel}>Cancel</button>
                         <button className="save" onClick={handleSaveClick}>Save</button>

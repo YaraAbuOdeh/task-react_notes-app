@@ -1,68 +1,25 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-.container{
-  max-width: 960px;
-  margin-right: auto;
-  margin-left: auto;
-  padding-right: 15px;
-  padding-left: 15px;
-}
-.note-list{
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-}
-.note.new{
-  background-color: #67d7cc;
-}
-textarea{
+textarea {
   resize: none;
 }
-textarea:focus{
+
+textarea:focus {
   outline: none;
 }
-.save .cancel{
+
+.save .cancel {
   background-color: #e1e1e1;
   border: none;
   border-radius: 15px;
   padding: 5px 10px;
 }
 
-.save:hover .cancel:hover{
+.save:hover .cancel:hover {
   background-color: #ededed;
   cursor: pointer;
 
 }
-.note{
-  background-color: #fef68a;
-  margin-bottom: 10px;
-  margin-top: 20px;
-  border-radius: 10px;
-  padding: 1rem;
-  min-height: 170px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  white-space: pre-wrap;
-}
 
-.note-footer{
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-.new-note.new.expanded{
+.new-note.new.expanded {
   display: flex;
   flex-direction: column;
   max-width: 20rem;
@@ -71,130 +28,16 @@ textarea:focus{
   padding: 10px;
 }
 
-.new-note.new.expanded input ,.new-note.new.expanded textarea{
+.new-note.new.expanded input,
+.new-note.new.expanded textarea {
   font-weight: bold;
   font-size: 16px;
   border: none;
 }
-.new-note.new.expanded input{
+
+.new-note.new.expanded input {
   padding-bottom: 2rem;
 }
-.delete-icon{
-  cursor: pointer;
-
-}
-
-.modal-overlay{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.modal {
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
-  padding: 20px;
-  animation: pop-up 0.3s ease;
-}
-
-.modal-content {
-  text-align: center;
-}
-
-.modal-buttons {
-  margin-top: 20px;
-  margin-left: 2rem;
-  float: right;
-  cursor: pointer;
-  direction: none;
-
-}
-
-@keyframes pop-up {
-  from {
-      transform: scale(0);
-  }
-  to {
-      transform: scale(1);
-  }
-}
-
-.search{
-  display: flex;
-  align-items: center;
-  background-color: rgb(233, 233, 233);
-  border-radius: 10px;
-  padding: 5px;
-  margin-bottom: 1.5rem;
-
-}
-
-.search input{
-  border: none;
-  background-color: rgb(233, 233, 233);
-  width: 100%;
-}
-.search input :focus{
-  outline: none;
-}
-
-.dialog-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-}
-
-.dialog {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  width: 300px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.dialog input[type="text"],
-.dialog textarea {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  resize: none;
-}
-
-.dialog .note-footer {
-  display: flex;
-  justify-content: space-between;
-}
-
-.dialog button {
-  padding: 10px 20px;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  color: #fff;
-  background-color: #007BFF; /* Bootstrap primary color */
-}
-
-.dialog button.cancel {
-  background-color: #6c757d; /* Bootstrap secondary color */
-}
-
-.dialog button:hover {
-  opacity: 0.9;
+.error{
+  color: red;
 }

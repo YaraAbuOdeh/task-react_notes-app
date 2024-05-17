@@ -1,14 +1,8 @@
 import React from "react";
-
-const UpdateNoteDialog = ({ open, onClose, note, onSave }) => {
+import styles from "./UpdateNoteDialog.module.css"
+const UpdateNoteDialog = ({ isOpen, onClose, note, onSave }) => {
   const [title, setTitle] = React.useState(note.title);
   const [content, setContent] = React.useState(note.content);
-//   React.useEffect(() => {
-//     if (note) {
-//       setTitle(note.title);
-//       setContent(note.content);
-//     }
-//   }, [note]);
 
   const handleSave = () => {
     onSave(note._id, title, content);
@@ -21,10 +15,10 @@ const UpdateNoteDialog = ({ open, onClose, note, onSave }) => {
     onClose();
   };
 
-  if (!open) return null;
+  if (!isOpen) return null;
 
   return (
-    <div className="dialog-background">
+    <div className={styles.dialogBackground}>
       <div className="dialog">
         <input
           type="text"

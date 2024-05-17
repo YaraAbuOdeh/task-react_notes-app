@@ -1,0 +1,42 @@
+.note {
+    background-color: #fef68a;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    border-radius: 10px;
+    padding: 1rem;
+    min-height: 170px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    white-space: pre-wrap;
+}
+
+.note-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.new-note.new.expanded {
+    display: flex;
+    flex-direction: column;
+    max-width: 20rem;
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    padding: 10px;
+}
+
+.new-note.new.expanded input,
+.new-note.new.expanded textarea {
+    font-weight: bold;
+    font-size: 16px;
+    border: none;
+}
+
+.new-note.new.expanded input {
+    padding-bottom: 2rem;
+}
+
+
+.deleteIcon {
+    cursor: pointer;
+}

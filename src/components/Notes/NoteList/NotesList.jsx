@@ -1,16 +1,17 @@
-import NoteItem from "./NoteItem";
-import AddNote from "./AddNote";
+import NoteItem from "../NoteItem/NoteItem";
+import AddNote from "../AddNote/AddNote";
+import styles from "./NoteList.module.css";
 
 const NotesList = ({
   notes,
   handleAddNote,
   handleDeleteNote,
-  handleSelectNote,
+  handleEditNote,
 }) => {
   return (
     <>
       <AddNote handleAddNote={handleAddNote} />
-      <div className="note-list">
+      <div className={styles.noteList}>
         {notes.map((note) => (
           <NoteItem
             key={note.id}
@@ -18,8 +19,8 @@ const NotesList = ({
             title={note.title}
             content={note.content}
             date={note.date}
-            onSelect={handleSelectNote}
-            handleDeleteNote={handleDeleteNote}
+            onSelect={handleEditNote}
+            onDelete={handleDeleteNote}
           />
         ))}
       </div>
